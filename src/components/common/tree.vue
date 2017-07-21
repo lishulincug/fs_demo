@@ -1,0 +1,99 @@
+<template>
+  <div id="treeMenu">
+    <div class="treeline">
+      <div @click.prevent="toggle" class="div-nav">
+          <span :class="table.title=='图层列表'?'font1':'font2'" class="span-font">
+            <span v-if="!isFolder">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <img :src="table.icon" class="diagramIcon" style=""/>{{table.title}}
+          </span>
+      </div>
+      <div @click="selectAll(table)" class="selecteIcon">
+        <img src="../../assets/photo/Diagram/selected@2x.png" v-if="table.status" class="select">
+        <img src="../../assets/photo/Diagram/selected2@2x.png" v-if="!table.status" class="select">
+      </div>
+    </div>
+    <div v-show="open" v-if="isFolder">
+      <tree-Menu v-for="table in table.type" :table="table" :key="table.id"></tree-Menu>
+    </div>
+  </div>
+</template>
+
+
+<script>
+  export default {
+    name: 'treeMenu',
+    props: ['table'],
+    data() {
+      return {
+        open: false
+      }
+    },
+    computed: {
+      isFolder: function () {
+        return this.table.type &&
+          this.table.type.length
+      }
+    },
+    methods: {
+      toggle: function () {
+        if (this.isFolder) {
+          this.open = !this.open
+        }
+      },
+      selectAll(table) {
+        this.table.status = !this.table.status
+        let status = this.table.status
+        var solve = (data) => {
+          if (data.status === status) {
+            for (var i = 0; i < data.type.length; i++) {
+              data.type[i].status = status
+              solve(data.type[i])
+            }
+          }
+        }
+        solve(table)
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .treeline {
+    height: 24px;
+    margin: 12px 6px 12px 12px;
+  }
+
+  .div-nav {
+    display: inline-block;
+    width: 193px;
+  }
+
+  .selecteIcon {
+    display: inline-block;
+    width: 16px
+  }
+
+  .select {
+    width: 16px;
+    height: 16px;
+  }
+
+  .diagramIcon {
+    width: 24px;
+    height: 24px;
+    vertical-align: bottom
+
+  }
+
+  .font1 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .font2 {
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+
+</style>
