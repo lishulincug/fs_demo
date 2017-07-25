@@ -17,6 +17,17 @@
                         <img src="../../assets/photo/senfang@2x.png"/>
                         <p><small>资源管理</small></p>                                 
                 </div>
+                        <!-- <el-dropdown-menu slot="dropdown" class="listNav-menu">
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">森林资源小班</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">森防网格</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">防火指挥中心</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">气象监测点</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">瞭望塔</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">防火检查站</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">扑火队伍</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/resource/warehouse')" class="listNav-item">物资库</el-dropdown-item>
+                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">消防车辆</el-dropdown-item>
+                        </el-dropdown-menu> -->
             </li>
              <li class="listNav-li">
                     <el-dropdown class="listNav-dropdown"  >

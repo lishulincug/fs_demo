@@ -1,6 +1,11 @@
 <template>
+<<<<<<< HEAD
   <div>
     <div id="map"
+=======
+  <div style="width:100%;height:100%;">
+    <div style="width:100%;height:100%;" id="map"
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     ></div>
   </div>
 </template>
@@ -69,6 +74,7 @@
         map.addEventListener('mousemove', function (e) {
           that.judge(e.point.lng, e.point.lat, areaImg)
         })
+<<<<<<< HEAD
       },
       setWidth() {
           var map=document.getElementById("map");
@@ -78,6 +84,11 @@
     },
     mounted() {
       this.setWidth();
+=======
+      }
+    },
+    mounted() {
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
       this.map = new BMap.Map('map')
       this.chose(this.place1.points)
     }

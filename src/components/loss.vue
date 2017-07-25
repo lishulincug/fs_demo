@@ -1,8 +1,13 @@
 <template>
   <div class="main" id="main">
     <headerTool></headerTool>
+<<<<<<< HEAD
     <div @click="modifyLayer">
       <Diagram></Diagram>
+=======
+    <div @click="modifyLayer" style="height:700px;">
+      <Diagram  class="bdmap"></Diagram>
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     </div>
     <div class="loss" id="loss">
       <div class="higher">
@@ -147,7 +152,12 @@
           var loss=document.getElementById("loss");
           var total = document.documentElement.clientHeight;
           loss.style.height=total-48+"px";
+<<<<<<< HEAD
 
+=======
+         var bdmap=document.getElementsByClassName("bdmap")[0];
+          bdmap.style.height=total-48+"px";
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
       }
     },
     components: {
@@ -161,8 +171,13 @@
       })
     },
     mounted() {
+<<<<<<< HEAD
       this.setWidth();
       this.init(this.map, this.lossResults, {lng: 113.3045102246, lat: 23.1902358112})
+=======
+      this.init(this.map, this.lossResults, {lng: 113.3045102246, lat: 23.1902358112})
+      this.setWidth();
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     }
   }
 </script>

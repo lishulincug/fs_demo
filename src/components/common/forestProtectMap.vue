@@ -44,11 +44,14 @@
             this.paintLayer(this.map, _layer, {lng: 113.3045102246, lat: 23.1902358112})
           }
         }
+<<<<<<< HEAD
       },
       setWidth() {
           var map=document.getElementById("map");
           var total = document.documentElement.clientHeight;
           map.style.height=total-48+"px";
+=======
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
       }
     },
     watch: {
@@ -60,7 +63,10 @@
       }
     },
     mounted() {
+<<<<<<< HEAD
       this.setWidth();
+=======
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
       this.map = new BMap.Map('map')
       const that = this
       this.paintLayers()

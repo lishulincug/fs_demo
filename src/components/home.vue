@@ -32,6 +32,7 @@ li.number.active{
         background-color: #5EBF1D;
         border:  0;
 }
+<<<<<<< HEAD
 
 .editForm-item .el-input__inner{
     border-top:0 !important;
@@ -39,5 +40,9 @@ li.number.active{
     border-left:0 !important;
     border-bottom:1px solid #E3E6E5;
 }
+=======
+
+
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
 
 </style>

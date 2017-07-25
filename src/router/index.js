@@ -140,12 +140,21 @@ export default new Router({
                     children: [{
                         path: 'warehouse',
                         name: 'Warehouse',
+<<<<<<< HEAD
                         component: Warehouse
                         // children: [{
                         //     path: 'detailedInformation',
                         //     name: 'DetailedInformation',
                         //     component: DetailedInformation
                         // }]
+=======
+                        component: Warehouse,
+                        children: [{
+                            path: 'detailedInformation',
+                            name: 'DetailedInformation',
+                            component: DetailedInformation
+                        }]
+>>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                     }]
 
                 }
