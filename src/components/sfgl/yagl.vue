@@ -1,5 +1,5 @@
 <template>
-    <div id="fhfa" >
+    <div id="plan" >
 		<div class="wrap">
 		<div class="bt">
      		 <span>  <strong class="title">防火方案</strong></span>
@@ -15,7 +15,7 @@
 					<el-input v-model="filters.name" placeholder="输入查询内容"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" v-on:click="getFhfa">查询</el-button>
+					<el-button type="primary" v-on:click="getPlan">查询</el-button>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="handleAdd">添加</el-button>
@@ -157,7 +157,7 @@
 
 <script>
 	export default {
-        name: 'Yagl',
+        name: 'plan',
 		data() {
 			return {
 
@@ -240,7 +240,7 @@
 				this.$router.push('/')
 			},
             //获取数据
-			getFhfa() {
+			getPlan() {
 				
             },
             //删除
@@ -314,7 +314,7 @@
 </script>
 
 <style scoped>
-#fhfa{
+#plan{
     position: absolute;
     bottom: 0px;
     left: 96px;
@@ -331,7 +331,7 @@ span{
 	
 }
 .bt{
-	height: 48%;
+	height: 48px;
 	border-bottom: 1px solid;
 	margin-bottom: 10px;
 }

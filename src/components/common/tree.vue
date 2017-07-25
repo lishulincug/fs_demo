@@ -4,12 +4,12 @@
       <div @click.prevent="toggle" class="div-nav">
           <span :class="table.title=='图层列表'?'font1':'font2'" class="span-font">
             <span v-if="!isFolder">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <img :src="table.icon" class="diagramIcon" style=""/>{{table.title}}
+            <img :src="table.icon" class="diagramIcon" />{{table.title}}
           </span>
       </div>
       <div @click="selectAll(table)" class="selecteIcon">
-        <img src="../../assets/photo/Diagram/selected@2x.png" v-if="table.status" class="select">
-        <img src="../../assets/photo/Diagram/selected2@2x.png" v-if="!table.status" class="select">
+        <img src="../../assets/photo/Diagram/selected@2x.png" v-if="table.display" class="select">
+        <img src="../../assets/photo/Diagram/selected2@2x.png" v-if="!table.display" class="select">
       </div>
     </div>
     <div v-show="open" v-if="isFolder">
@@ -41,12 +41,12 @@
         }
       },
       selectAll(table) {
-        this.table.status = !this.table.status
-        let status = this.table.status
+        this.table.display = !this.table.display
+        let display = this.table.display
         var solve = (data) => {
-          if (data.status === status) {
+          if (data.display === display) {
             for (var i = 0; i < data.type.length; i++) {
-              data.type[i].status = status
+              data.type[i].display = display
               solve(data.type[i])
             }
           }

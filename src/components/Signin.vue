@@ -9,11 +9,11 @@
                 <div class="log-email">
                 <input type="text" placeholder="账号" :class="'log-input'" v-model="account" required>
                 <input type="password" placeholder="密码" :class="'log-input'"  v-model="password" required>
-                <button class="log-btn" @click="signin">signin</button>
+                <button class="log-btn" @click="signin">登陆</button>
                 <p class="log-p " @click="signup"><a><small>注册</small></a></p>
                 </div>
                 <div class="footer">
-                <p><small>地下管网空间可视化管理系统</small></p>
+                <p><small>森林防火可视化管理系统</small></p>
                 <p><small>-V1.0-</small></p>
                 </div>
             </div>
@@ -79,13 +79,12 @@
 }
 .warp{
     width: 650px;
-    height: 700px;
     margin:0% auto;
     text-align: center;
 }
   #login{
     width: 650px;
-    padding-top:200px; 
+    padding-top:20%; 
     text-align: center;
   }
   .logo{

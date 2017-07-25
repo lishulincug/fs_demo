@@ -6,7 +6,7 @@
                 <el-menu :default-active="activeIndex2" class="el-menu el-menu-demo" mode="horizontal" @select="handleSelect">
                   <el-submenu index="1">
                     <template slot="title" >预报监控</template>
-                    <el-menu-item index="hxqxdjyb">森防责任网</el-menu-item>
+                    <el-menu-item index="forestRespGrid">森防责任网</el-menu-item>
                     <el-menu-item index="hxqxdjyb">火险气象等级预报</el-menu-item>
                     <el-menu-item index="hxqxdjyb">地质灾害点等级预报</el-menu-item>
                   </el-submenu>
