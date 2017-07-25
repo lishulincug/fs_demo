@@ -10,10 +10,10 @@
                 <input type="text" placeholder="账号" :class="'log-input'" v-model="account" required>
                 <input type="password" placeholder="密码" :class="'log-input'"  v-model="password" required>
                 <input type="password" placeholder="再次输入密码" :class="'log-input' "  v-model="rePassword" required>
-                <button class="log-btn" @click="signup">signup</button>
+                <button class="log-btn" @click="signup">注册</button>
                 </div>
                 <div class="footer">
-                <p><small>地下管网空间可视化管理系统</small></p>
+                <p><small>森林防火可视化管理系统</small></p>
                 <p><small>-V1.0-</small></p>
                 </div>
             </div>
@@ -75,13 +75,12 @@
 }
 .warp{
     width: 650px;
-    height: 700px;
     margin:0% auto;
     text-align: center;
 }
   #login{
     width: 650px;
-    padding-top:200px; 
+    padding-top:20%; 
     text-align: center;
   }
   .logo{
