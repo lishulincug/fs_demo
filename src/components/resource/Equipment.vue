@@ -1,9 +1,9 @@
 <template>
-    <div id="warehouse" >
+    <div id="equipment" >
 		<div class="wrap">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
-                <span class="title">  <strong>小横琴物资库1号</strong></span>
+                <span class="title">  <strong>气象仪设备信息</strong></span>
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="save(1)"/>	
                 
             </div>	
@@ -11,41 +11,38 @@
         <section >
             <!--工具条-->
             <el-col :span="24" class="toolbar">
-                      <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                        class="warehouse-select"
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                        </el-option>
-                    </el-select>
-                    <button class="warehouse-button warehouse-add" @click="handleAdd">添加</button>
-                    <button  class="warehouse-button warehouse-right" @click="handleAdd">物资清单</button>
-                    <button  class="warehouse-button warehouse-right" @click="handleAdd">检查记录</button>
-                    <button class="warehouse-button warehouse-right"  @click="handleAdd">盘点记录</button>
-
+               <el-form :inline="true" :model="filters">
+                    <el-form-item>
+                        <el-input  class="equipment-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button class="equipment-button" :click="getequipment">查询</el-button>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button class="equipment-button"  @click="handleAdd">添加</el-button>
+                    </el-form-item>
+                </el-form>
             </el-col>
 
             <!--列表-->
-            <el-table :data="warehouses" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
+            <el-table :data="equipments" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
                 <el-table-column prop="name" label="名称" width="100" sortable>
                 </el-table-column>
-                <el-table-column prop="type" label="类型" width="100" sortable>
+                <el-table-column prop="address" label="地址" width="100" sortable>
                 </el-table-column>
-                <el-table-column prop="brand" label="品牌" width="100" sortable>
+                <el-table-column prop="longitude" label="经度" width="100" sortable>
                 </el-table-column>
-                <el-table-column prop="size" label="型号" width="100" sortable>
+                <el-table-column prop="laitude" label="纬度" width="100" sortable>
                 </el-table-column>
-                <el-table-column prop="buyTime" label="购买时间" min-width="150" sortable>
+                <el-table-column prop="user" label="负责人" min-width="150" sortable>
                 </el-table-column>
-                <el-table-column prop="sum" label="现有库存" min-width="120" sortable>
+                <el-table-column prop="phone" label="联系方式" min-width="120" sortable>
                 </el-table-column>
-                <el-table-column prop="limit" label="警戒库存" min-width="120" sortable>
+                <el-table-column prop="des" label="描述" min-width="120" sortable>
                 </el-table-column>
-                <el-table-column prop="last" label="最后使用时间"min- width="180" sortable>
+                <el-table-column prop="addTime" label="添加时间"min- width="180" sortable>
                 </el-table-column>
-                <el-table-column prop="check" label="检查时间" min-width="150" sortable>
+                <el-table-column prop="editTime" label="修改时间" min-width="150" sortable>
                 </el-table-column>                
                 <el-table-column prop="state" label="状态" min-width="100" sortable>
                 </el-table-column>
@@ -61,42 +58,36 @@
         <div v-show="editFormVisible" class="editForm-div">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
-                <span class="title">  <strong>小横琴物资库1号</strong></span>
+                <span class="title">  <strong>气象仪设备信息</strong></span>
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="editFormVisible = false"/>	               
             </div>	
             <el-form label-position="left" label-width="80px" :model="editForm" class="editForm-form">
-            <el-form-item label="ID" class="editForm-item">
-                <el-input v-model="editForm.id"></el-input>
-            </el-form-item>
             <el-form-item label="名称" class="editForm-item">
                 <el-input v-model="editForm.name"></el-input>
             </el-form-item>
-            <el-form-item label="类型" class="editForm-item">
-                <el-select v-model="editForm.type" placeholder="请选择类型">
-                    <el-option label="生存" value="shanghai"></el-option>
-                    <el-option label="休息" value="beijing"></el-option>
-                </el-select>
+            <el-form-item label="地址" class="editForm-item">
+                <el-input v-model="editForm.address"></el-input>
             </el-form-item>
-            <el-form-item label="品牌" class="editForm-item">
-                <el-input v-model="editForm.brand"></el-input>
+            <el-form-item label="经度" class="editForm-item">
+                <el-input v-model="editForm.longitude"></el-input>
             </el-form-item>
-            <el-form-item label="型号" class="editForm-item">
-                <el-input v-model="editForm.size"></el-input>
+            <el-form-item label="纬度" class="editForm-item">
+                <el-input v-model="editForm.laitude"></el-input>
             </el-form-item>
-            <el-form-item label="购买时间" class="editForm-item">
-                      <el-date-picker type="date" placeholder="选择日期" v-model="editForm.buyTime" style="width: 100%;" ></el-date-picker>
+            <el-form-item label="负责人" class="editForm-item">
+                <el-input v-model="editForm.user"></el-input>
             </el-form-item>
-            <el-form-item label="现有库存" class="editForm-item">
-                <el-input v-model="editForm.sum"></el-input>
+            <el-form-item label="联系方式" class="editForm-item">
+                <el-input v-model="editForm.phone"></el-input>
             </el-form-item>
-            <el-form-item label="警戒库存" class="editForm-item">
-                <el-input v-model="editForm.limit"></el-input>
+            <el-form-item label="描述" class="editForm-item">
+                <el-input v-model="editForm.des"></el-input>
             </el-form-item>
-            <el-form-item label="最后使用" class="editForm-item">
-                      <el-date-picker type="date" placeholder="选择日期" v-model="editForm.last" style="width: 100%;" ></el-date-picker>
+            <el-form-item label="添加时间" class="editForm-item">
+                      <el-date-picker type="date" placeholder="选择日期" v-model="editForm.addTime" style="width: 100%;" ></el-date-picker>
             </el-form-item>
-            <el-form-item label="检查时间" class="editForm-item">
-                      <el-date-picker type="date" placeholder="选择日期" v-model="editForm.check" style="width: 100%;" ></el-date-picker>
+            <el-form-item label="修改时间" class="editForm-item">
+                      <el-date-picker type="date" placeholder="选择日期" v-model="editForm.editTime" style="width: 100%;" ></el-date-picker>
             </el-form-item>
             <el-form-item label="状态" class="editForm-item">
                 <el-select v-model="editForm.state" placeholder="请选择状态">
@@ -112,7 +103,7 @@
 
 <script>
 	export default {
-        name: 'warehouse',
+        name: 'equipment',
 		data() {
 			return {
         value:"",
@@ -132,19 +123,19 @@
 						value: '14级',
 						label: '4'
 						}],
-				warehouses: [
-                    {id:"345543123",name:"饮水机",type:"生存",brand:"怡宝",size:"1.5L",buyTime:"2013/12/21",
-                    sum:"12",limit:"5",last:"2017/5/20",check:"2017/6/20",state:"良好" },
-                    {id:"345543123",name:"饮水机",type:"生存",brand:"怡宝",size:"1.5L",buyTime:"2013/12/2",
-                    sum:"12",limit:"5",last:"2017/5/20",check:"2017/6/20",state:"良好" },
-                    {id:"345543123",name:"饮水机",type:"生存",brand:"怡宝",size:"1.5L",buyTime:"2013/12/2",
-                    sum:"12",limit:"5",last:"2017/5/20",check:"2017/6/20",state:"良好" },
-                    {id:"345543123",name:"饮水机",type:"生存",brand:"怡宝",size:"1.5L",buyTime:"2013/12/2",
-                    sum:"12",limit:"5",last:"2017/5/20",check:"2017/6/20",state:"良好" },
-                    {id:"345543123",name:"饮水机",type:"生存",brand:"怡宝",size:"1.5L",buyTime:"2013/12/2",
-                    sum:"12",limit:"5",last:"2017/5/20",check:"2017/6/20",state:"良好" },
-                    {id:"345543123",name:"饮水机",type:"生存",brand:"怡宝",size:"1.5L",buyTime:"2013/12/2",
-                    sum:"12",limit:"5",last:"2017/5/20",check:"2017/6/20",state:"良好" },
+				equipments: [
+                    {id:"345543123",name:"气象仪1号",address:"广州 海珠",user:"张三",phone:'154 1234 7330',des:'xxxx',
+                    longitude:"123.5",laitude:"23",editTime:"2017/6/20",state:"良好",addTime:'2015/12/12' },
+                    {id:"345543123",name:"气象仪2号",tyaddresspe:"广州 天河",user:"李三",phone:'154 1234 7330',des:'xxxx',
+                    longitude:"123.5",laitude:"23",editTime:"2017/6/20",state:"良好",addTime:'2015/12/12' },
+                    {id:"345543123",name:"气象仪3号",address:"广州 越秀",user:"王三",phone:'154 1234 7330',des:'xxxx',
+                    longitude:"123.5",laitude:"23",editTime:"2017/6/20",state:"良好",addTime:'2015/12/12' ,addTime:'2015/12/12'},
+                    {id:"345543123",name:"气象仪14号",address:"广州 海珠",user:"怡宝",phone:'154 1234 7330',des:'xxxx',
+                    longitude:"123.5",laitude:"23",editTime:"2017/6/20",state:"良好",addTime:'2015/12/12' },
+                    {id:"345543123",name:"气象仪1号",address:"广州 海珠",user:"怡宝",phone:'154 1234 7330',des:'xxxx',
+                    longitude:"123.5",laitude:"23",editTime:"2017/6/20",state:"良好",addTime:'2015/12/12' },
+                    {id:"345543123",name:"气象仪1号",address:"广州 海珠",user:"怡宝",phone:'154 1234 7330',des:'xxxx',
+                    longitude:"123.5",laitude:"23",editTime:"2017/6/20",state:"良好",addTime:'2015/12/12' },
                 ],
 				total: 0,
 				page: 1,
@@ -161,22 +152,22 @@
 				editForm: {
                     id: '',
                     name:'',
-					type: '',
-					brand: '',
-					size: '',
-                    buyTime: '',
-                    sum:'',
-                    limit:'',
-                    last:'',
-                    check:'',
+					address: '',
+					phone: '',
+					addTime: '',
+                    longitude: '',
+                    laitude:'',
+                    des:'',
+                    user:'',
                     state:'',
+                    editTime:'',
 				},
 
 			}
 		},
 		methods: {
             //获取数据
-			getwarehouse() {
+			getequipment() {
 				
             },
 			//显示编辑界面
@@ -220,7 +211,7 @@
 </script>
 
 <style scoped>
-#warehouse{
+#equipment{
     position: absolute;
     bottom: 0px;
     height: 336px;
@@ -253,25 +244,13 @@ img{
 .tableClose{
     float: right;
 }
-.warehouse-button{
+.equipment-button{
     display: inline-block;
     width: 82px;
     height: 36px;
-    color: #37403F;
-    background-color: #FFFFFF;
-    border: 1px solid #D7D9D8;
-    margin: 10px 15px;
-}
-.warehouse-button:hover{
-    border: 1px solid #5EBF1D;
-}
-.warehouse-add{
     color: #FFFFFF;
     background-color: #5EBF1D;
-    border: 0;
-}
-.warehouse-right{
-    float:right; 
+    border: 1px solid #D7D9D8;
 }
 /* ---修改框 添加框  */
 .editForm-div{
@@ -279,7 +258,7 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 610px;
+    height: 570px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;

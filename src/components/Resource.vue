@@ -2,17 +2,10 @@
   <div class="main" id="main">
     <headerTool></headerTool>
     <div id="res">
-<<<<<<< HEAD
           <div class="resource">
             <div class="higher">
               <p class="resource-title">资源管理</p>
               <el-select v-model="pathTitle" class="resource-select" placeholder="请选择">
-=======
-          <div class="warehouse">
-            <div class="higher">
-              <p class="warehouse-title">资源管理</p>
-              <el-select v-model="input2" class="warehouse-select" placeholder="请选择地区">
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -23,7 +16,6 @@
               <el-input
                 placeholder="请搜索内容"
                 icon="search"
-<<<<<<< HEAD
                 class="resource-input"
                 v-model="input2"
                 :on-icon-click="handleIconClick">
@@ -33,17 +25,6 @@
             <div class="line"></div>
             <div class="mid">
               <div v-for="result in resourceResults" :key="result.address">
-=======
-                class="warehouse-input"
-                v-model="input2"
-                :on-icon-click="handleIconClick">
-              </el-input>
-              <button class="warehouse-button">添加</button>
-            </div>
-            <div class="line"></div>
-            <div class="mid">
-              <div v-for="result in warehouseResults" :key="result.address">
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                 <div class="result">
                   <div class="result-address">
                     <img class="addressLogo" src="../assets/photo/position_cell2@2x.png">
@@ -71,7 +52,6 @@
             <div class="line"></div>
             <img class="editLogo img-l" src="../assets/photo/edit-off@2x.png">
             <img class="delLogo img-l" src="../assets/photo/delete@2x.png">
-<<<<<<< HEAD
             <img @click="routerGo" class="watchLogo img-l" src="../assets/photo/log-off@2x.png">
           </div>
            <div id="resourceNav">
@@ -80,14 +60,6 @@
           <div @click="modifyLayer" style="height: 700px;width:100%;">
                 <Diagram></Diagram>
           </div>
-=======
-            <img @click="show" class="watchLogo img-l" src="../assets/photo/log-off@2x.png">
-          </div>
-              <div @click="modifyLayer" style="height: 700px">
-                <Diagram></Diagram>
-                <!-- <detailedInformation v-show="detailedInformationShow"></detailedInformation> -->
-              </div>
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     </div>        
   </div>
 </template>
@@ -106,15 +78,9 @@
     },
   data() {
       return {
-<<<<<<< HEAD
         input2: '',
         pathTitle: '',
         resourceResults: [{
-=======
-        detailedInformationShow:false,
-        input2: '',
-        warehouseResults: [{
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
           name: "小横琴物资库1号", address: "越秀区",
           point: new BMap.Point(113.3045102246, 23.1902358112)
         },
@@ -138,34 +104,25 @@
           {key: '备注', value: '-'},
         ],
         options: [{
-<<<<<<< HEAD
           value: "/resource/warehouse", label: "物资库"
         }, {
           value: "瞭望塔", label: "瞭望塔"
         }, {
           value: "瞭望塔", label: "三防网络"
         }, {
-          value: "3", label: "扑火队伍"
+          value: "/resource/outfireTeam", label: "扑火队伍"
         }, {
           value: "/resource/car", label: "消防车辆"
         }, {
-          value: "天河区", label: "气象检查站"
+          value: "/resource/equipment", label: "气象检查站"
         }, {
           value: "越秀区", label: "防火检查站"
         }, {
-          value: "天河区", label: "森林资源小班"
+          value: "/resource/grade", label: "森林资源小班"
         }, {
           value: "越秀区", label: "防火指挥中心"
         }
         ],
-=======
-          value: "越秀区", lable: "越秀区"
-        }, {
-          value: "天河区", lable: "天河区"
-        }, {
-          value: "越秀区", lable: "越秀区"
-        }],
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
         map: {},
         movePoint: {
           lng: 113.319422,
@@ -175,13 +132,8 @@
       }
     },
     methods: {
-<<<<<<< HEAD
       routerGo(){
         this.$router.push(this.pathTitle);
-=======
-      show(){
-        this.detailedInformationShow=true;
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
       },
       handleIconClick() {
       },
@@ -217,7 +169,6 @@
         map.panTo(point)
       },
       modifyLayer() {
-<<<<<<< HEAD
         this.init(this.map, this.resourceResults, {lng: 113.3045102246, lat: 23.1902358112})
       },
       setWidth() {
@@ -227,16 +178,6 @@
           resourceNav.style.width=totalWidth-340+"px";
           var resource=document.getElementsByClassName("resource")[0];
           resource.style.height=total-48+"px";
-=======
-        this.init(this.map, this.warehouseResults, {lng: 113.3045102246, lat: 23.1902358112})
-      },
-      setWidth() {
-          var BDmap=document.getElementById("BDmap");
-          var total = document.documentElement.clientHeight;
-          var totalWidth = document.documentElement.clientWidth;
-          BDmap.style.height=total-48+"px";
-          BDmap.style.width=totalWidth-96+"px";
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
       }
     },
     beforeCreate() {
@@ -246,11 +187,7 @@
     },
     mounted() {
       this.setWidth();
-<<<<<<< HEAD
       this.init(this.map, this.resourceResults, {lng: 113.3045102246, lat: 23.1902358112})
-=======
-      this.init(this.map, this.warehouseResults, {lng: 113.3045102246, lat: 23.1902358112})
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     }
 
   }
@@ -261,37 +198,21 @@
   width: 100%;
 }
 
-<<<<<<< HEAD
   .resource {
-=======
-  .warehouse {
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     position: absolute;
     top: 48px;
     left: 96px;
     z-index: 1;
     background-color: #ffffff;
-<<<<<<< HEAD
-=======
-    height: 94.6%;
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     width: 208px;
     padding: 0 16px;
   }
 
-<<<<<<< HEAD
   .resource-input {
     width: 148px;
   }
 
   .resource-button {
-=======
-  .warehouse-input {
-    width: 148px;
-  }
-
-  .warehouse-button {
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     width: 50px;
     background-color: #5EBF1D;
     color: #ffffff;
@@ -300,22 +221,14 @@
 
   }
 
-<<<<<<< HEAD
   p.resource-title {
-=======
-  p.warehouse-title {
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     padding-top: 10px;
     font-size: 14px;
     color: #37403F;
     line-height: 32px;
   }
 
-<<<<<<< HEAD
   .resource-select {
-=======
-  .warehouse-select {
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
     padding: 10px 0;
   }
 

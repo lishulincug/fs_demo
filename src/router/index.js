@@ -8,7 +8,10 @@ import Userinfo from '@/components/Userinfo'
 
 import Resource from '@/components/Resource'
 import Warehouse from '@/components/resource/Warehouse'
-import DetailedInformation from '@/components/resource/detailedInformation'
+import Car from '@/components/resource/Car'
+import Grade from '@/components/resource/Grade'
+import outfireTeam from '@/components/resource/outfireTeam'
+import Equipment from '@/components/resource/Equipment'
 
 import Patrol from '@/components/Patrol'
 import User from '@/components/Patrol/User'
@@ -140,21 +143,23 @@ export default new Router({
                     children: [{
                         path: 'warehouse',
                         name: 'Warehouse',
-<<<<<<< HEAD
                         component: Warehouse
-                        // children: [{
-                        //     path: 'detailedInformation',
-                        //     name: 'DetailedInformation',
-                        //     component: DetailedInformation
-                        // }]
-=======
-                        component: Warehouse,
-                        children: [{
-                            path: 'detailedInformation',
-                            name: 'DetailedInformation',
-                            component: DetailedInformation
-                        }]
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
+                    },{
+                        path: 'car',
+                        name: 'Car',
+                        component: Car
+                    },{
+                        path: 'grade',
+                        name: 'Grade',
+                        component: Grade
+                    },{
+                        path: 'outfireTeam',
+                        name: 'outfireTeam',
+                        component: outfireTeam
+                    },{
+                        path: 'equipment',
+                        name: 'Equipment',
+                        component: Equipment
                     }]
 
                 }

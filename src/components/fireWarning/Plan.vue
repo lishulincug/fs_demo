@@ -2,14 +2,7 @@
     <div id="plan" >
 		<div class="wrap">
             <div class="bt">
-<<<<<<< HEAD
                 <span class="title">  <strong>防火应急预案</strong></span>              
-=======
-                <span class="title">  <strong>防火应急预案</strong></span>
-                <img  src="../../assets/photo/close@2x.png" @click="tableClose"/>	
-                <img  src="../../assets/photo/window zoom1@2x.png" />	
-                
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
             </div>	
         <section>
             <!--工具条-->
@@ -37,21 +30,13 @@
                 </el-table-column>
                 <el-table-column prop="respondRank" label="响应等级" width="120" sortable>
                 </el-table-column>
-<<<<<<< HEAD
                 <el-table-column prop="department" label="预防解析部门" width="180" sortable>
-=======
-                <el-table-column prop="department" label="预防解析部门" min-width="180" sortable>
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                 </el-table-column>
                 <el-table-column prop="creatdAT" label="发布时间" min-width="180" sortable>
                 </el-table-column>
                 <el-table-column prop="effectiveTime" label="实施时间" min-width="180" sortable>
                 </el-table-column>
-<<<<<<< HEAD
                 <el-table-column prop="recorder" label="记录人" min-width="180" sortable>
-=======
-                <el-table-column prop="recorder" label="记录人"min- width="180" sortable>
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                 </el-table-column>
                 <el-table-column prop="mark" label="备注" min-width="180" sortable>
                 </el-table-column>
@@ -62,7 +47,6 @@
                         </template>
                 </el-table-column>
             </el-table>
-<<<<<<< HEAD
             <!--添加修改页面  -->
             <div v-show="editFormVisible" class="editForm-div">
                 <div class="bt">
@@ -78,65 +62,6 @@
                         <el-input v-model="editForm.scope" placeholder="范围"></el-input>
                     </el-form-item>
                     <el-form-item label="预防等级" prop="preventRank" class="editForm-item">
-=======
-            <!--添加界面-->
-            <el-dialog title="添加" v-model="addFormVisible" :close-on-click-modal="false">
-                <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-                    <el-form-item label="姓名" prop="name">
-                        <el-input v-model="addForm.name" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="预防范围" prop="scope">
-                        <el-input v-model="addForm.scope" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="预防等级" prop="preventRank">
-                        <el-select v-model="addForm.preventRank" clearable placeholder="请选择">
-                            <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="响应等级" prop="respondRank">
-                        <el-select v-model="addForm.respondRank" clearable placeholder="请选择">
-                            <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="解析部门" prop="department">
-                        <el-input v-model="addForm.department" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="实施日期">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addForm.effectiveTime"></el-date-picker>
-                    </el-form-item>
-                    <el-form-item label="记录人">
-                        <el-input v-model="addForm.recorder" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="备注">
-                        <el-input v-model="addForm.mark" auto-complete="off"></el-input>
-                    </el-form-item>
-                </el-form>
-                <div slot="footer" class="dialog-footer">
-                    <el-button @click="addFormVisible = false">取消</el-button>
-                    <el-button type="primary" @click="addSubmit" :loading="addLoading">提交</el-button>
-                </div>
-            </el-dialog> 
-             <!-- 编辑界面 -->
-            <el-dialog title="编辑" v-model="editFormVisible" size="small" >
-                <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
-                    <el-form-item label="姓名" prop="name">
-                        <el-input v-model="editForm.name" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="预防范围" prop="scope">
-                        <el-input v-model="editForm.scope"></el-input>
-                    </el-form-item>
-                    <el-form-item label="预防等级" prop="preventRank">
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                         <el-select v-model="editForm.preventRank" clearable placeholder="请选择">
                             <el-option
                             v-for="item in options"
@@ -146,11 +71,7 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-<<<<<<< HEAD
                     <el-form-item label="响应等级" prop="respondRank" class="editForm-item">
-=======
-                    <el-form-item label="响应等级" prop="respondRank">
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                         <el-select v-model="editForm.respondRank" clearable placeholder="请选择">
                             <el-option
                             v-for="item in options"
@@ -160,7 +81,6 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-<<<<<<< HEAD
                     <el-form-item label="解析部门" prop="department" class="editForm-item">
                         <el-input v-model="editForm.department"  placeholder="部门"></el-input>
                     </el-form-item>
@@ -182,26 +102,6 @@
                     <button class="editForm-button editForm-button-left" @click="editFormVisible = false" >取消</button> <button class="editForm-button editForm-button-left" @click="save(2)" >保存</button>                
                 </el-form>
             </div>	    
-=======
-                    <el-form-item label="解析部门" prop="department">
-                        <el-input v-model="editForm.department" ></el-input>
-                    </el-form-item>
-                    <el-form-item label="实施日期">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="editForm.effectiveTime"></el-date-picker>
-                    </el-form-item>
-                    <el-form-item label="记录人">
-                        <el-input v-model="editForm.recorder" ></el-input>
-                    </el-form-item>
-                    <el-form-item label="备注">
-                        <el-input v-model="editForm.mark" ></el-input>
-                    </el-form-item>
-                </el-form>
-                <div slot="footer" class="dialog-footer">
-                    <el-button @click.native="editFormVisible = false">取消</el-button>
-                    <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-                </div>
-            </el-dialog>  
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
         </section>
 	</div>
     </div>
@@ -213,11 +113,7 @@
 		data() {
 			return {
 
-<<<<<<< HEAD
                 editFormTitle:'',
-=======
-
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
 				filters: {
 					name: ''
 				},
@@ -254,14 +150,6 @@
                 
                 editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
-<<<<<<< HEAD
-=======
-				editFormRules: {
-					name: [
-						{ required: true, message: '请输入姓名', trigger: 'blur' }
-					]
-				},
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
 				//编辑界面数据
 				editForm: {
                     name: '',
@@ -273,37 +161,9 @@
                     recorder:'',
                     mark:'',
 				},
-<<<<<<< HEAD
 			}
 		},
 		methods: {
-=======
-
-				addFormVisible: false,//新增界面是否显示
-				addLoading: false,
-				addFormRules: {
-					name: [
-						{ required: true, message: '请输入姓名', trigger: 'blur' }
-					]
-				},
-				//新增界面数据
-				addForm: {
-                    name: '',
-                    scope:'',
-					preventRank: '',
-					respondRank: '',
-					department: '',
-                    effectiveTime: '',
-                    recorder:'',
-                    mark:'',
-				}
-			}
-		},
-		methods: {
-			tableClose(){
-				this.$router.push('/')
-			},
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
             //获取数据
 			getPlan() {
 				
@@ -314,7 +174,6 @@
 			},
 			//显示编辑界面
 			handleEdit (index, row) {
-<<<<<<< HEAD
                 this.editFormTitle='修改预案';
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
@@ -324,15 +183,6 @@
                 this.editFormTitle='新增预案';
 				this.editFormVisible = true;
 				this.editForm = {
-=======
-				this.editFormVisible = true;
-				 this.editForm = Object.assign({}, row);
-			},
-			//显示新增界面
-			handleAdd () {
-				this.addFormVisible = true;
-				this.addForm = {
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
                     name: '',
                     scope:'',
 					preventRank: '',
@@ -345,7 +195,6 @@
 			editSubmit() {
 
 			},
-<<<<<<< HEAD
             setWidth() {
           var plan=document.getElementById("plan");
           var total = document.documentElement.clientWidth;
@@ -355,17 +204,6 @@
         mounted() {
         this.setWidth();
         }
-=======
-			//新增
-			addSubmit () {
-
-		}
-		// ,
-		// mounted() {
-		
-		// }
-    }
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
 }
 </script>
 
@@ -381,12 +219,9 @@
 .wrap{
 	padding: 0 10px;
 }
-<<<<<<< HEAD
 
 
 /*-----------  */
-=======
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
 .title{
 	font-size: 14px;
 	color: #666666;
@@ -402,7 +237,6 @@ img{
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-<<<<<<< HEAD
 	padding-top: 14px;
 	padding-right: 14px;
 }
@@ -452,12 +286,5 @@ img{
     border: 1px solid #5EBF1D;
 
 }
-=======
-	float: right;
-	padding-top: 14px;
-	padding-right: 14px;
-}
-
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
 
 </style>

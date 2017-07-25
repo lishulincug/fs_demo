@@ -1,11 +1,7 @@
 <template>
   <div class="main" id="main">
       <headerTool></headerTool>
-<<<<<<< HEAD
       <div id="patrol">
-=======
-      <div id="patrol"  style="height:700px;">
->>>>>>> ed66a361e2180c05fef32b888f87ac6c0ff43cdc
         <DutyNet></DutyNet>
         <router-view></router-view>
       </div>

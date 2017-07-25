@@ -1,9 +1,9 @@
 <template>
-    <div id="car" >
+    <div id="outfireTeam" >
 		<div class="wrap">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
-                <span class="title">  <strong>消防车辆</strong></span>
+                <span class="title">  <strong>救火队成员信息</strong></span>
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="save(1)"/>	
                 
             </div>	
@@ -13,35 +13,31 @@
             <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
                 <el-form :inline="true" :model="filters">
                     <el-form-item>
-                        <el-input  class="car-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
+                        <el-input  class="outfireTeam-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="car-button" :click="getCar">查询</el-button>
+                        <el-button class="outfireTeam-button" :click="getoutfireTeam">查询</el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="car-button"  @click="handleAdd">添加</el-button>
+                        <el-button class="outfireTeam-button"  @click="handleAdd">添加</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
 
             <!--列表-->
-            <el-table :data="cars" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
-                <el-table-column prop="name" label="名称" width="100" sortable>
+            <el-table :data="outfireTeams" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
+                <el-table-column prop="name" label="姓名" min-width="100" sortable>
                 </el-table-column>
-                <el-table-column prop="num" label="车牌号" min-width="150" sortable>
-                </el-table-column>
-                <el-table-column prop="unit" label="单位" width="180" sortable>
-                </el-table-column>
-                <el-table-column prop="user" label="责任人" width="100" sortable>
+                <el-table-column prop="age" label="年龄" min-width="100" sortable>
                 </el-table-column>
                 <el-table-column prop="phone" label="联系方式" min-width="180" sortable>
                 </el-table-column>
-                <el-table-column prop="address" label="位置" min-width="120" sortable>
+                <el-table-column prop="address" label="地址" min-width="180" sortable>
                 </el-table-column>
-                <el-table-column prop="longitude" label="经度" min-width="120" sortable>
+                <el-table-column prop="team" label="所属队伍" min-width="180" sortable>
                 </el-table-column>
-                <el-table-column prop="laitude" label="经度" min-width="120" sortable>
-                </el-table-column>                
+                <el-table-column prop="state" label="状态" min-width="120" sortable>
+                </el-table-column>           
                 <el-table-column label="操作" min-width="150">
                         <template scope="scope">
                             <el-button size="small" @click="handleEdit(scope.$id, scope.row)">编辑</el-button>
@@ -58,30 +54,24 @@
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="editFormVisible = false"/>	               
             </div>	
             <el-form label-position="left" label-width="80px" :model="editForm" class="editForm-form">
-            <el-form-item label="名称" class="editForm-item">
+            <el-form-item label="姓名" class="editForm-item">
                 <el-input v-model="editForm.name"></el-input>
             </el-form-item>
-            <el-form-item label="车牌号" class="editForm-item">
-                <el-input v-model="editForm.num"></el-input>
-            </el-form-item>
-            <el-form-item label="单位" class="editForm-item">
-                <el-input v-model="editForm.unit"></el-input>
-            </el-form-item>
-            <el-form-item label="责任人" class="editForm-item">
-                <el-input v-model="editForm.user"></el-input>
+            <el-form-item label="年龄" class="editForm-item">
+                <el-input v-model="editForm.age"></el-input>
             </el-form-item>
             <el-form-item label="联系方式" class="editForm-item">
                 <el-input v-model="editForm.phone"></el-input>
             </el-form-item>
-            <el-form-item label="位置" class="editForm-item">
+            <el-form-item label="地址" class="editForm-item">
                 <el-input v-model="editForm.address"></el-input>
             </el-form-item>
-            <el-form-item label="经度" class="editForm-item">
-                <el-input v-model="editForm.longitude"></el-input>
+            <el-form-item label="所属队伍" class="editForm-item">
+                <el-input v-model="editForm.team"></el-input>
             </el-form-item>
-            <el-form-item label="纬度" class="editForm-item">
-                <el-input v-model="editForm.laitude"></el-input>
-            </el-form-item>            
+            <el-form-item label="状态" class="editForm-item">
+                <el-input v-model="editForm.state"></el-input>
+            </el-form-item>           
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
         </div>
@@ -90,7 +80,7 @@
 
 <script>
 	export default {
-        name: 'Car',
+        name: 'outfireTeam',
 		data() {
 			return {
                 editFormTitle:'',
@@ -98,32 +88,13 @@
 				filters: {
 					name: ''
 				},
-				options: [{
-						value: '1级',
-						label: '1'
-						}, {
-						value: '2级',
-						label: '2'
-						}, {
-						value: '3级',
-						label: '3'
-						}, {
-						value: '14级',
-						label: '4'
-						}],
-				cars: [
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
+				outfireTeams: [
+                    {team:"1班",name:"张三",phone:"157 2356 1245",address:"广州 海珠",age:"25",state:"休息" },
+                    {team:"2班",name:"李三",phone:"157 2226 7245",address:"广州 海珠",age:"25",state:"正常工作" },
+                    {team:"3班",name:"王三",phone:"157 2376 1745",address:"广州 海珠",age:"25",state:"休息" },
+                    {team:"1班",name:"张三",phone:"157 2356 1245",address:"广州 海珠",age:"25",state:"正常工作" },
+                    {team:"1班",name:"张三",phone:"157 2356 1245",address:"广州 海珠",age:"25",state:"休息" },
+                    {team:"1班",name:"张三",phone:"157 2356 1245",address:"广州 海珠",age:"25",state:"正常工作" },
                 ],
 				total: 0,
 				page: 1,
@@ -133,32 +104,30 @@
                 editLoading: false,
 				//编辑界面数据
                 editForm: {
-                        name:'',
-                        num: '',
-                        unit: '',
-                        user: '',
+                        team:'',
+                        name: '',
+                        age: '',
                         phone: '',
-                        address:'',
-                        laitude:'',
-                        longitude:'',
+                        address: '',
+                        state:'',
                 },
 
 		    }
 		},
 		methods: {
             //获取数据
-			getCar() {
+			getoutfireTeam() {
 				
             },
 			//显示编辑界面
 			handleEdit (index, row) {
-                this.editFormTitle='编辑车辆信息';
+                this.editFormTitle='编辑资源小班信息';
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
-                this.editFormTitle='添加车辆';
+                this.editFormTitle='添加资源小班';
 				this.editFormVisible = true;
 				this.editForm = {
                     id: '',
@@ -193,7 +162,7 @@
 </script>
 
 <style scoped>
-#car{
+#outfireTeam{
     position: absolute;
     bottom: 0px;
     height: 336px;
@@ -226,7 +195,7 @@ img{
 .tableClose{
     float: right;
 }
-.car-button{
+.outfireTeam-button{
     display: inline-block;
     width: 82px;
     height: 36px;
@@ -241,7 +210,7 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 480px;
+    height: 382px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
