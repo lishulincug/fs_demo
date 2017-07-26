@@ -79,7 +79,7 @@
   data() {
       return {
         input2: '',
-        pathTitle: '',
+        pathTitle: '/resource/warehouse',
         resourceResults: [{
           name: "小横琴物资库1号", address: "越秀区",
           point: new BMap.Point(113.3045102246, 23.1902358112)
@@ -106,9 +106,9 @@
         options: [{
           value: "/resource/warehouse", label: "物资库"
         }, {
-          value: "瞭望塔", label: "瞭望塔"
+          value: "/resource/OBtower", label: "瞭望塔"
         }, {
-          value: "瞭望塔", label: "三防网络"
+          value: "/resource/forestRespGrid", label: "三防网络"
         }, {
           value: "/resource/outfireTeam", label: "扑火队伍"
         }, {
@@ -116,11 +116,11 @@
         }, {
           value: "/resource/equipment", label: "气象检查站"
         }, {
-          value: "越秀区", label: "防火检查站"
+          value: "/resource/fireStation", label: "防火检查站"
         }, {
           value: "/resource/grade", label: "森林资源小班"
         }, {
-          value: "越秀区", label: "防火指挥中心"
+          value: "/resource/controlCenter", label: "防火指挥中心"
         }
         ],
         map: {},

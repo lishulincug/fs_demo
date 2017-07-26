@@ -1,9 +1,9 @@
 <template>
-    <div id="car" >
+    <div id="forestRespGrid" >
 		<div class="wrap">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
-                <span class="title">  <strong>消防车辆</strong></span>
+                <span class="title">  <strong>森防责任网</strong></span>
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="save(1)"/>	
                 
             </div>	
@@ -13,34 +13,34 @@
             <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
                 <el-form :inline="true" :model="filters">
                     <el-form-item>
-                        <el-input  class="car-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
+                        <el-input  class="forestRespGrid-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="car-button" :click="getCar">查询</el-button>
+                        <el-button class="forestRespGrid-button" :click="getforestRespGrid">查询</el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="car-button"  @click="handleAdd">添加</el-button>
+                        <el-button class="forestRespGrid-button"  @click="handleAdd">添加</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
 
             <!--列表-->
-            <el-table :data="cars" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
-                <el-table-column prop="name" label="名称" width="100" sortable>
+            <el-table :data="forestRespGrids" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
+                <el-table-column prop="id" label="网格ID" width="150" sortable>
                 </el-table-column>
-                <el-table-column prop="num" label="车牌号" min-width="150" sortable>
+                <el-table-column prop="name" label="责任人" min-width="150" sortable>
                 </el-table-column>
-                <el-table-column prop="unit" label="单位" width="180" sortable>
+                <el-table-column prop="unit" label="所属单位" width="180" sortable>
                 </el-table-column>
-                <el-table-column prop="user" label="责任人" width="150" sortable>
+                <el-table-column prop="service" label="服务" width="100" sortable>
                 </el-table-column>
                 <el-table-column prop="phone" label="联系方式" min-width="180" sortable>
                 </el-table-column>
                 <el-table-column prop="address" label="位置" min-width="120" sortable>
                 </el-table-column>
-                <el-table-column prop="longitude" label="经度" min-width="120" sortable>
+                <el-table-column prop="scope" label="辖区" min-width="120" sortable>
                 </el-table-column>
-                <el-table-column prop="laitude" label="经度" min-width="120" sortable>
+                <el-table-column prop="mark" label="备注" min-width="120" sortable>
                 </el-table-column>                
                 <el-table-column label="操作" min-width="150">
                         <template scope="scope">
@@ -58,29 +58,29 @@
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="editFormVisible = false"/>	               
             </div>	
             <el-form label-position="left" label-width="80px" :model="editForm" class="editForm-form">
-            <el-form-item label="名称" class="editForm-item">
-                <el-input v-model="editForm.name"></el-input>
-            </el-form-item>
-            <el-form-item label="车牌号" class="editForm-item">
-                <el-input v-model="editForm.num"></el-input>
-            </el-form-item>
-            <el-form-item label="单位" class="editForm-item">
-                <el-input v-model="editForm.unit"></el-input>
+            <el-form-item label="网格ID" class="editForm-item">
+                <el-input v-model="editForm.id"></el-input>
             </el-form-item>
             <el-form-item label="责任人" class="editForm-item">
-                <el-input v-model="editForm.user"></el-input>
+                <el-input v-model="editForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="所属单位" class="editForm-item">
+                <el-input v-model="editForm.unit"></el-input>
+            </el-form-item>
+            <el-form-item label="服务" class="editForm-item">
+                <el-input v-model="editForm.service"></el-input>
             </el-form-item>
             <el-form-item label="联系方式" class="editForm-item">
                 <el-input v-model="editForm.phone"></el-input>
             </el-form-item>
-            <el-form-item label="位置" class="editForm-item">
+            <el-form-item label="住址" class="editForm-item">
                 <el-input v-model="editForm.address"></el-input>
             </el-form-item>
-            <el-form-item label="经度" class="editForm-item">
-                <el-input v-model="editForm.longitude"></el-input>
+            <el-form-item label="辖区" class="editForm-item">
+                <el-input v-model="editForm.scope"></el-input>
             </el-form-item>
-            <el-form-item label="纬度" class="editForm-item">
-                <el-input v-model="editForm.laitude"></el-input>
+            <el-form-item label="备注" class="editForm-item">
+                <el-input v-model="editForm.mark"></el-input>
             </el-form-item>            
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
@@ -90,7 +90,7 @@
 
 <script>
 	export default {
-        name: 'Car',
+        name: 'forestRespGrid',
 		data() {
 			return {
                 editFormTitle:'',
@@ -111,19 +111,19 @@
 						value: '14级',
 						label: '4'
 						}],
-				cars: [
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
-                    address:"广州海珠",longitude:"123.5",laitude:"23" },
+				forestRespGrids: [
+                    {name:"张三",id:"123456",unit:"广州森防办",service:"",phone:"15766659999",
+                    address:"广州海珠",scope:"海珠区",mark:"23" },
+                    {name:"李四",id:"123456",unit:"广州森防办",service:"",phone:"15766659999",
+                    address:"广州海珠",scope:"天河区",mark:"23" },
+                    {name:"王五",id:"123456",unit:"广州森防办",service:"",phone:"15766659999",
+                    address:"广州海珠",scope:"番禺区",mark:"23" },
+                    {name:"曹六",id:"123456",unit:"广州森防办",service:"",phone:"15766659999",
+                    address:"广州海珠",scope:"番禺区",mark:"23" },
+                    {name:"陈二",id:"123456",unit:"广州森防办",service:"",phone:"15766659999",
+                    address:"广州海珠",scope:"番禺区",mark:"23" },
+                    {name:"黄琦",id:"123456",unit:"广州森防办",service:"",phone:"15766659999",
+                    address:"广州海珠",scope:"番禺区",mark:"23" },
                 ],
 				total: 0,
 				page: 1,
@@ -134,41 +134,44 @@
 				//编辑界面数据
                 editForm: {
                         name:'',
-                        num: '',
+                        id: '',
                         unit: '',
-                        user: '',
+                        service: '',
                         phone: '',
                         address:'',
-                        laitude:'',
-                        longitude:'',
+                        scope:'',
+                        mrak:'',
                 },
 
 		    }
 		},
 		methods: {
             //获取数据
-			getCar() {
+			getforestRespGrid() {
 				
             },
 			//显示编辑界面
 			handleEdit (index, row) {
-                this.editFormTitle='编辑车辆信息';
+                this.editFormTitle='编辑森防网格信息';
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
-                this.editFormTitle='添加车辆';
+                this.editFormTitle='添加网格';
 				this.editFormVisible = true;
 				this.editForm = {
-                        name:'',
-                        num: '',
-                        unit: '',
-                        user: '',
-                        phone: '',
-                        address:'',
-                        laitude:'',
-                        longitude:'',
+                    id: '',
+                    name:'',
+                    type: '',
+                    brand: '',
+                    size: '',
+                    buyTime: '',
+                    sum:'',
+                    limit:'',
+                    last:'',
+                    check:'',
+                    state:'',
 				    };
         },
         handleDel(){
@@ -190,7 +193,7 @@
 </script>
 
 <style scoped>
-#car{
+#forestRespGrid{
     position: absolute;
     bottom: 0px;
     height: 336px;
@@ -223,7 +226,7 @@ img{
 .tableClose{
     float: right;
 }
-.car-button{
+.forestRespGrid-button{
     display: inline-block;
     width: 82px;
     height: 36px;

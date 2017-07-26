@@ -12,6 +12,10 @@ import Car from '@/components/resource/Car'
 import Grade from '@/components/resource/Grade'
 import outfireTeam from '@/components/resource/outfireTeam'
 import Equipment from '@/components/resource/Equipment'
+import forestRespGrid from '@/components/resource/forestRespGrid'
+import fireStation from '@/components/resource/fireStation'
+import OBtower from '@/components/resource/OBtower'
+import controlCenter from '@/components/resource/controlCenter'
 
 import Patrol from '@/components/Patrol'
 import User from '@/components/Patrol/User'
@@ -160,6 +164,22 @@ export default new Router({
                         path: 'equipment',
                         name: 'Equipment',
                         component: Equipment
+                    },{
+                        path: 'forestRespGrid',
+                        name: 'forestRespGrid',
+                        component: forestRespGrid
+                    },{
+                        path: 'fireStation',
+                        name: 'fireStation',
+                        component: fireStation
+                    },{
+                        path: 'OBtower',
+                        name: 'OBtower',
+                        component: OBtower
+                    },{
+                        path: 'controlCenter',
+                        name: 'controlCenter',
+                        component: controlCenter
                     }]
 
                 }

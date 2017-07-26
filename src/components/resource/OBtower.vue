@@ -1,9 +1,9 @@
 <template>
-    <div id="car" >
+    <div id="OBtower" >
 		<div class="wrap">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
-                <span class="title">  <strong>消防车辆</strong></span>
+                <span class="title">  <strong>瞭望塔信息管理</strong></span>
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="save(1)"/>	
                 
             </div>	
@@ -13,26 +13,22 @@
             <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
                 <el-form :inline="true" :model="filters">
                     <el-form-item>
-                        <el-input  class="car-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
+                        <el-input  class="OBtower-input" v-model="filters.name" placeholder="输入查询内容"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="car-button" :click="getCar">查询</el-button>
+                        <el-button class="OBtower-button" :click="getOBtower">查询</el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="car-button"  @click="handleAdd">添加</el-button>
+                        <el-button class="OBtower-button"  @click="handleAdd">添加</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
 
             <!--列表-->
-            <el-table :data="cars" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
-                <el-table-column prop="name" label="名称" width="100" sortable>
+            <el-table :data="OBtowers" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
+                <el-table-column prop="name" label="名称" min-width="150" sortable>
                 </el-table-column>
-                <el-table-column prop="num" label="车牌号" min-width="150" sortable>
-                </el-table-column>
-                <el-table-column prop="unit" label="单位" width="180" sortable>
-                </el-table-column>
-                <el-table-column prop="user" label="责任人" width="150" sortable>
+                <el-table-column prop="user" label="责任人" min-width="150" sortable>
                 </el-table-column>
                 <el-table-column prop="phone" label="联系方式" min-width="180" sortable>
                 </el-table-column>
@@ -41,6 +37,8 @@
                 <el-table-column prop="longitude" label="经度" min-width="120" sortable>
                 </el-table-column>
                 <el-table-column prop="laitude" label="经度" min-width="120" sortable>
+                </el-table-column>
+                <el-table-column prop="mark" label="备注" min-width="150" sortable>
                 </el-table-column>                
                 <el-table-column label="操作" min-width="150">
                         <template scope="scope">
@@ -61,12 +59,6 @@
             <el-form-item label="名称" class="editForm-item">
                 <el-input v-model="editForm.name"></el-input>
             </el-form-item>
-            <el-form-item label="车牌号" class="editForm-item">
-                <el-input v-model="editForm.num"></el-input>
-            </el-form-item>
-            <el-form-item label="单位" class="editForm-item">
-                <el-input v-model="editForm.unit"></el-input>
-            </el-form-item>
             <el-form-item label="责任人" class="editForm-item">
                 <el-input v-model="editForm.user"></el-input>
             </el-form-item>
@@ -82,6 +74,9 @@
             <el-form-item label="纬度" class="editForm-item">
                 <el-input v-model="editForm.laitude"></el-input>
             </el-form-item>            
+            <el-form-item label="备注" class="editForm-item">
+                <el-input v-model="editForm.mark"></el-input>
+            </el-form-item>  
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
         </div>
@@ -90,7 +85,7 @@
 
 <script>
 	export default {
-        name: 'Car',
+        name: 'OBtower',
 		data() {
 			return {
                 editFormTitle:'',
@@ -111,18 +106,18 @@
 						value: '14级',
 						label: '4'
 						}],
-				cars: [
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
+				OBtowers: [
+                    {name:"瞭望塔1",mark:" ",user:"张三",phone:"15766659999",
                     address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
+                    {name:"瞭望塔2",mark:" ",user:"张三",phone:"15766659999",
                     address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
+                    {name:"瞭望塔3",mark:" ",user:"张三",phone:"15766659999",
                     address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
+                    {name:"瞭望塔4",mark:" ",user:"张三",phone:"15766659999",
                     address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
+                    {name:"瞭望塔",mark:" ",user:"张三",phone:"15766659999",
                     address:"广州海珠",longitude:"123.5",laitude:"23" },
-                    {name:"红旗",num:"粤A 123456",unit:"聚升",user:"张三",phone:"15766659999",
+                    {name:"瞭望塔",mark:" ",user:"张三",phone:"15766659999",
                     address:"广州海珠",longitude:"123.5",laitude:"23" },
                 ],
 				total: 0,
@@ -134,8 +129,7 @@
 				//编辑界面数据
                 editForm: {
                         name:'',
-                        num: '',
-                        unit: '',
+                        mark: '',
                         user: '',
                         phone: '',
                         address:'',
@@ -147,23 +141,22 @@
 		},
 		methods: {
             //获取数据
-			getCar() {
+			getOBtower() {
 				
             },
 			//显示编辑界面
 			handleEdit (index, row) {
-                this.editFormTitle='编辑车辆信息';
+                this.editFormTitle='编辑瞭望塔信息';
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
-                this.editFormTitle='添加车辆';
+                this.editFormTitle='添加瞭望塔信息';
 				this.editFormVisible = true;
-				this.editForm = {
+                this.editForm={
                         name:'',
-                        num: '',
-                        unit: '',
+                        mark: '',
                         user: '',
                         phone: '',
                         address:'',
@@ -190,7 +183,7 @@
 </script>
 
 <style scoped>
-#car{
+#OBtower{
     position: absolute;
     bottom: 0px;
     height: 336px;
@@ -223,7 +216,7 @@ img{
 .tableClose{
     float: right;
 }
-.car-button{
+.OBtower-button{
     display: inline-block;
     width: 82px;
     height: 36px;
@@ -238,7 +231,7 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 480px;
+    height: 434px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;

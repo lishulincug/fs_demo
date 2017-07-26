@@ -8,32 +8,21 @@
        <ul>
             <li class="listNav-li">
                 <div class="li-div" @click="routerGo(0,'/')">
-                    <img src="../../assets/photo/map@2x.png"/>
+                    <img src="../../assets/photo/nav/map@2x.png"/>
                     <p><small>森防地图</small></p>                              
                 </div>
             </li>
              <li class="listNav-li">
                 <div class="li-div" @click="routerGo(1,'/resource')">
-                        <img src="../../assets/photo/senfang@2x.png"/>
+                        <img src="../../assets/photo/nav/ziyuan@2x.png"/>
                         <p><small>资源管理</small></p>                                 
                 </div>
-                        <!-- <el-dropdown-menu slot="dropdown" class="listNav-menu">
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">森林资源小班</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">森防网格</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">防火指挥中心</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">气象监测点</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">瞭望塔</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">防火检查站</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">扑火队伍</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/resource/warehouse')" class="listNav-item">物资库</el-dropdown-item>
-                            <el-dropdown-item  v-on:click.native="routerGo(1,'/')" class="listNav-item">消防车辆</el-dropdown-item>
-                        </el-dropdown-menu> -->
             </li>
              <li class="listNav-li">
                     <el-dropdown class="listNav-dropdown"  >
                         <span class="el-dropdown-link">
                             <div class="li-div">
-                                <img src="../../assets/photo/senfang@2x.png"/>
+                                <img src="../../assets/photo/nav/shipinjiance@2x.png"/>
                                 <p><small>视频监测</small></p>                              
                             </div>
                         </span>
@@ -47,7 +36,7 @@
                     <el-dropdown class="listNav-dropdown"  >
                         <span class="el-dropdown-link">
                             <div class="li-div">
-                                <img src="../../assets/photo/senfang@2x.png"/>
+                                <img src="../../assets/photo/nav/senfang@2x.png"/>
                                 <p><small>气象监测</small></p>                              
                             </div>
                         </span>
@@ -61,7 +50,7 @@
                     <el-dropdown class="listNav-dropdown"  >
                         <span class="el-dropdown-link">
                             <div class="li-div">
-                                <img src="../../assets/photo/senfang@2x.png"/>
+                                <img src="../../assets/photo/nav/xuncha@2x.png"/>
                                 <p><small>巡护监测</small></p>                              
                             </div>
                         </span>
@@ -77,7 +66,7 @@
                     <el-dropdown class="listNav-dropdown"  >
                         <span class="el-dropdown-link">
                             <div class="li-div">
-                                <img src="../../assets/photo/senfang@2x.png"/>
+                                <img src="../../assets/photo/nav/yujing@2x.png"/>
                                 <p><small>防火预警</small></p>                              
                             </div>
                         </span>
@@ -92,7 +81,7 @@
                     <el-dropdown class="listNav-dropdown"  >
                         <span class="el-dropdown-link">
                             <div class="li-div">
-                                <img src="../../assets/photo/senfang@2x.png"/>
+                                <img src="../../assets/photo/nav/huozai@2x.png"/>
                                 <p><small>火灾管理</small></p>                              
                             </div>
                         </span>
@@ -106,13 +95,13 @@
             </li>               
             <li class="listNav-li">
                 <div class="li-div" @click="routerGo(7,'/outFireConduct')">
-                    <img src="../../assets/photo/senfang@2x.png"/>
+                    <img src="../../assets/photo/nav/yingjidiaodu@2x.png"/>
                     <p><small>扑火指挥</small></p>                              
                  </div> 
             </li>               
             <li class="listNav-li">
                 <div class="li-div" @click="routerGo(8,'/loss')">
-                    <img src="../../assets/photo/senfang@2x.png"/>
+                    <img src="../../assets/photo/nav/pinggu@2x.png"/>
                     <p><small>损失评估</small></p>                              
                 </div>
 
