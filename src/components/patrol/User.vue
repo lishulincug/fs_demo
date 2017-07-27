@@ -174,11 +174,11 @@ p.user-title{
 .user-select{
     padding: 10px 0;
 }
-.line{
-    width: 208px;
-    margin: 15px 0;
-    border: 1px solid #E3E6E5;
-}
+  .line {
+    margin: 16px 0;
+    height: 1px;
+    background-color: #E3E6E5; 
+  }
 /*--------第2部分  */
   .result {
     width: 208px;
@@ -194,26 +194,26 @@ p.user-title{
   }
   .result-sex{
         display: inline-block;
+        box-sizing: border-box;
         width:48px;
         height:48px; 
-        vertical-align : top; 
+        padding: 0 12px;
   }
+
   .sexLogo{
-        padding: 8px 12px;
+    margin-bottom: 4px;
         width: 24px;
         height: 32px;
-        vertical-align : middle; 
+        vertical-align: center;
   }
-  .result-info{
+.result-info{
         display: inline-block;
         width: 150px;
         height: 48px;  
   }
   .info{
-    display: inline-block;
-    width:140px;
     size: 12px; 
-    line-height: 20px;
+    line-height: 18px;
     color: #37403F;
     
   }
@@ -268,7 +268,8 @@ p.user-title{
 .log-line{
     width: 220px;
     margin: 15px 0;
-    border: 1px solid #E3E6E5;
+    height: 1px;
+    background-color: #E3E6E5; 
 }
 .lon-on{
     display: inline-block;

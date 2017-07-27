@@ -21,7 +21,6 @@ export default {
 <style>
 #home{
     height:100%;
-
 }
 #rv{
   margin-left: 96px;

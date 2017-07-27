@@ -51,6 +51,7 @@
             </el-table>
         </section>
 	</div>
+    <!--修改  -->
         <div v-show="editFormVisible" class="editForm-div">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
@@ -81,8 +82,47 @@
             </el-form-item>
             <el-form-item label="备注" class="editForm-item">
                 <el-input v-model="editForm.mark"></el-input>
-            </el-form-item>            
+            </el-form-item>
+            <div class="editForm-button-div">             
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
+            </el-form>
+        </div>
+        <!--添加  -->
+        <div v-show="addFormVisible" class="addForm-div">
+            <div class="bt">
+                <img src="../../assets/photo/detail-on@2x.png">
+                <span class="title">  <strong>{{editFormTitle}}</strong></span>
+                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="addFormVisible = false"/>	               
+            </div>	
+            <el-form label-position="left" label-width="80px" :model="addForm" class="editForm-form">
+            <el-form-item label="网格ID" class="editForm-item">
+                <el-input v-model="addForm.id"></el-input>
+            </el-form-item>
+            <el-form-item label="责任人" class="editForm-item">
+                <el-input v-model="addForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="所属单位" class="editForm-item">
+                <el-input v-model="addForm.unit"></el-input>
+            </el-form-item>
+            <el-form-item label="服务" class="editForm-item">
+                <el-input v-model="addForm.service"></el-input>
+            </el-form-item>
+            <el-form-item label="联系方式" class="editForm-item">
+                <el-input v-model="addForm.phone"></el-input>
+            </el-form-item>
+            <el-form-item label="住址" class="editForm-item">
+                <el-input v-model="addForm.address"></el-input>
+            </el-form-item>
+            <el-form-item label="辖区" class="editForm-item">
+                <el-input v-model="addForm.scope"></el-input>
+            </el-form-item>
+            <el-form-item label="备注" class="editForm-item">
+                <el-input v-model="addForm.mark"></el-input>
+            </el-form-item>
+            <div class="editForm-button-div">             
+                <button class="editForm-button" @click="addFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
             </el-form>
         </div>
     </div>
@@ -127,10 +167,11 @@
                 ],
 				total: 0,
 				page: 1,
-                        
+                addFormVisible: false,        
                 listLoading: false,
                 editFormVisible: false,//编辑界面是否显示
                 editLoading: false,
+                addForm:{},
 				//编辑界面数据
                 editForm: {
                         name:'',
@@ -152,15 +193,17 @@
             },
 			//显示编辑界面
 			handleEdit (index, row) {
-                this.editFormTitle='编辑森防网格信息';
+                this.editFormTitle='修改森防网格信息';
+                this.addFormVisible = false;
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
                 this.editFormTitle='添加网格';
-				this.editFormVisible = true;
-				this.editForm = {
+                this.editFormVisible = false;
+				this.addFormVisible = true;
+				this.addForm = {
                     id: '',
                     name:'',
                     type: '',
@@ -213,7 +256,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -241,7 +284,18 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 480px;
+    height: 520px;
+    background: #FFFFFF;
+    border: 1px solid #D7D9D8;
+    box-sizing: border-box;
+    padding: 0 16px;
+}
+.addForm-div{
+    position: fixed;
+    top:64px;
+    left:352px;
+    width: 240px;
+    height: 520px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -249,7 +303,7 @@ img{
 }
 .editForm-form{
     display: inline-block;
-    height: 572px;
+    height: 468px;
     overflow: hidden
 }
 .editForm-item{
@@ -257,15 +311,19 @@ img{
     /* height: 36px ！important; */
     margin-bottom: 10px ;
 }
+.editForm-button-div{
+    position: absolute;
+    bottom: 0px;
+    margin-left: -16px;
+}
 .editForm-button{
     height: 44px;
-    color: #FFFFFF;
     font-size: 14px;
     color: #37403F;
     letter-spacing: 0;
     line-height: 14px;
     border: 1px solid #D9D9D9;
-    width: 100px;;
+    width: 116px;;
     box-sizing: border-box;
     background-color: #FFFFFF;
 }

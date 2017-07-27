@@ -60,16 +60,17 @@ p.position-title{
     color:  #37403F;
     line-height: 32px;
 }
-.line{
-    width: 208px;
+  .line {
     margin: 16px 0;
-    border: 1px solid #E3E6E5;
-}
+    height: 1px;
+    background-color: #E3E6E5; 
+  }
 input{
-    color: #D7D9D8;
+    color: #37403F;
     width: 150px;
     margin-left:30px; 
-    border-bottom:1px solid #0F2543;
+    line-height: 30px;
+    border-bottom:1px solid #E3E6E5;
 }
 .position-button{
     width: 208px;
@@ -80,7 +81,6 @@ input{
 }
 span{
     display: inline-block;
-    line-height: 32px;
     font-size: 12px;
     color: #37403F;
     padding: 5px 0;

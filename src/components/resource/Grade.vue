@@ -47,6 +47,7 @@
             </el-table>
         </section>
 	</div>
+    <!--修改  -->
         <div v-show="editFormVisible" class="editForm-div">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
@@ -75,6 +76,35 @@
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
         </div>
+        <!--添加  -->
+        <div v-show="addFormVisible" class="addForm-div">
+            <div class="bt">
+                <img src="../../assets/photo/detail-on@2x.png">
+                <span class="title">  <strong>{{editFormTitle}}</strong></span>
+                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="addFormVisible = false"/>	               
+            </div>	
+            <el-form label-position="left" label-width="80px" :model="addForm" class="editForm-form">
+            <el-form-item label="小班名" class="editForm-item">
+                <el-input v-model="addForm.team"></el-input>
+            </el-form-item>
+            <el-form-item label="地类" class="editForm-item">
+                <el-input v-model="addForm.soilType"></el-input>
+            </el-form-item>
+            <el-form-item label="地形" class="editForm-item">
+                <el-input v-model="addForm.landfrom"></el-input>
+            </el-form-item>
+            <el-form-item label="起源" class="editForm-item">
+                <el-input v-model="addForm.origin"></el-input>
+            </el-form-item>
+            <el-form-item label="林种" class="editForm-item">
+                <el-input v-model="addForm.treeType"></el-input>
+            </el-form-item>
+            <el-form-item label="平均年龄" class="editForm-item">
+                <el-input v-model="addForm.avgAge"></el-input>
+            </el-form-item>           
+                <button class="editForm-button" @click="addFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </el-form>
+        </div>        
     </div>
 </template>
 
@@ -98,10 +128,11 @@
                 ],
 				total: 0,
 				page: 1,
-                        
+                addFormVisible: false,        
                 listLoading: false,
                 editFormVisible: false,//编辑界面是否显示
                 editLoading: false,
+                addForm: {},
 				//编辑界面数据
                 editForm: {
                         team:'',
@@ -122,14 +153,16 @@
 			//显示编辑界面
 			handleEdit (index, row) {
                 this.editFormTitle='编辑资源小班信息';
+                this.addFormVisible = false;
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
                 this.editFormTitle='添加资源小班';
-				this.editFormVisible = true;
-				this.editForm = {
+                this.editFormVisible = false;
+				this.addFormVisible = true;
+				this.addForm = {
                     id: '',
                     name:'',
                     type: '',
@@ -152,6 +185,7 @@
 			},
         save(index){
           this.editFormVisible = false; 
+          this.addFormVisible = false; 
        },
 
     },		
@@ -182,7 +216,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -211,6 +245,17 @@ img{
     left:352px;
     width: 240px;
     height: 382px;
+    background: #FFFFFF;
+    border: 1px solid #D7D9D8;
+    box-sizing: border-box;
+    padding: 0 16px;
+}
+.addForm-div{
+    position: fixed;
+    top:64px;
+    left:352px;
+    width: 240px;
+    height: 386px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;

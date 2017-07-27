@@ -157,11 +157,11 @@ p.outFireConduct-title{
     line-height: 48px;
 }
 
-.line{
-    width: 208px;
-    margin: 10px 0;
-    border: 1px solid #E3E6E5;
-}
+  .line {
+    margin: 16px 0;
+    height: 1px;
+    background-color: #E3E6E5; 
+  }
 /*--------第2部分  */
   .result {
     width: 208px;
@@ -174,17 +174,16 @@ p.outFireConduct-title{
   .result:hover {
     background:  rgba(174,230,138,0.15);
   }
-  .addressLogo{
-        padding: 12px 0px;
-        width: 24px;
-        height: 24px;
-
-  }
   .result-address{
         width: 32px;
         height: 48px; 
         text-align: center;
         display: inline-block;
+  }
+    .addressLogo{
+        width: 24px;
+        height: 24px;
+    margin-bottom: 4px;
   }
   .result-info{
         width: 170px;
@@ -193,11 +192,10 @@ p.outFireConduct-title{
   }
   .info{
     size: 12px; 
-    line-height: 12px;
+    line-height: 18px;
     color: #37403F;
   }
   p.info{
-     line-height: 39px;
      color: #79807F;
   }
 

@@ -82,8 +82,10 @@
             <el-form-item label="纬度" class="editForm-item">
                 <el-input v-model="editForm.laitude"></el-input>
             </el-form-item>            
-                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
+            <div class="editForm-button-div">             
+                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
         </div>
     </div>
 </template>
@@ -238,7 +240,7 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 480px;
+    height: 520px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -246,17 +248,19 @@ img{
 }
 .editForm-form{
     display: inline-block;
-    height: 572px;
-    overflow: hidden
+    height: 480px;
 }
 .editForm-item{
     display: inline-block;
     /* height: 36px ！important; */
     margin-bottom: 10px ;
 }
+.editForm-button-div{
+    position: absolute;
+    bottom: 0px;
+}
 .editForm-button{
     height: 44px;
-    color: #FFFFFF;
     font-size: 14px;
     color: #37403F;
     letter-spacing: 0;

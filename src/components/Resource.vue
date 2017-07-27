@@ -233,9 +233,9 @@
   }
 
   .line {
-    width: 208px;
     margin: 16px 0;
-    border: 1px solid #E3E6E5;
+    height: 1px;
+    background-color: #E3E6E5; 
   }
 
   /*--------第2部分  */
@@ -243,7 +243,6 @@
     width: 208px;
     height: 48px;
     font-size: 12px;
-    letter-spacing: 0;
     line-height: 12px;
     box-sizing: border-box;
   }
@@ -254,16 +253,14 @@
 
   .result-address {
     width: 32px;
-    height: 48px;
-    text-align: top;
+    height: 32px;
     display: inline-block;
-
   }
 
   .addressLogo {
     width: 24px;
     height: 24px;
-    vertical-align: middle;
+    margin-bottom: 4px;
   }
 
   .result-info {
@@ -274,12 +271,11 @@
 
   .info {
     size: 12px;
-    line-height: 12px;
+    line-height: 18px;
     color: #37403F;
   }
 
   span.info {
-    margin-top: 10px;
     color: #79807F;
   }
 

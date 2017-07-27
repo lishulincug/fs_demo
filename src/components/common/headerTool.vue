@@ -23,7 +23,7 @@
                                       <!-- <img class="imgIcon" src="../../assets/photo/Group 2@2x.png"/> -->
                                     <el-dropdown class="headerTool-dropdown" menu-align="start">
                                         <span class="el-dropdown-link">
-                                          <img class="imgIcon" src="../../assets/photo/Group 2@2x.png"/>
+                                          <img class="imgIcon imgIcondropdown " src="../../assets/photo/Group 2@2x.png"/>
                                         </span>
                                         <el-dropdown-menu slot="dropdown" class="headerTool-menu">
                                             <el-dropdown-item class="headerTool-item">测量距离</el-dropdown-item>
@@ -34,7 +34,7 @@
                                   <el-col :span="4">
                                     <el-dropdown class="headerTool-dropdown" menu-align="start">
                                         <span class="el-dropdown-link">
-                                          <img class="imgIcon" src="../../assets/photo/Group@2x.png"/>
+                                          <img class="imgIcon imgIcondropdown" src="../../assets/photo/Group@2x.png"/>
                                         </span>
                                         <el-dropdown-menu slot="dropdown" class="headerTool-menu">
                                             <el-dropdown-item class="headerTool-item">测量距离</el-dropdown-item>
@@ -125,6 +125,12 @@ export default {
         height: 24px;
         padding: 12px 10px 12px 10px;
 
+    }
+    .imgIcondropdown{
+        display: inline-block;
+        width: 32px;
+        height: 24px;
+        padding: 12px 6px 12px 6px;
     }
     .mid-input{
         margin-top:8px;

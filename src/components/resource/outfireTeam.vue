@@ -47,6 +47,7 @@
             </el-table>
         </section>
 	</div>
+    <!--x修改  -->
         <div v-show="editFormVisible" class="editForm-div">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
@@ -71,8 +72,41 @@
             </el-form-item>
             <el-form-item label="状态" class="editForm-item">
                 <el-input v-model="editForm.state"></el-input>
-            </el-form-item>           
+            </el-form-item>
+            <div class="editForm-button-div">            
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
+            </el-form>
+        </div>
+        <!--添加  -->
+         <div v-show="addFormVisible" class="addForm-div">
+            <div class="bt">
+                <img src="../../assets/photo/detail-on@2x.png">
+                <span class="title">  <strong>{{editFormTitle}}</strong></span>
+                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="addFormVisible = false"/>	               
+            </div>	
+            <el-form label-position="left" label-width="80px" :model="addForm" class="editForm-form">
+            <el-form-item label="姓名" class="editForm-item">
+                <el-input v-model="addForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="年龄" class="editForm-item">
+                <el-input v-model="addForm.age"></el-input>
+            </el-form-item>
+            <el-form-item label="联系方式" class="editForm-item">
+                <el-input v-model="addForm.phone"></el-input>
+            </el-form-item>
+            <el-form-item label="地址" class="editForm-item">
+                <el-input v-model="addForm.address"></el-input>
+            </el-form-item>
+            <el-form-item label="所属队伍" class="editForm-item">
+                <el-input v-model="addForm.team"></el-input>
+            </el-form-item>
+            <el-form-item label="状态" class="editForm-item">
+                <el-input v-model="addForm.state"></el-input>
+            </el-form-item>
+            <div class="editForm-button-div">            
+                <button class="editForm-button" @click="addFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
             </el-form>
         </div>
     </div>
@@ -98,11 +132,12 @@
                 ],
 				total: 0,
 				page: 1,
-                        
+                addFormVisible: false,       
                 listLoading: false,
                 editFormVisible: false,//编辑界面是否显示
                 editLoading: false,
-				//编辑界面数据
+                //编辑界面数据
+                addForm: {},
                 editForm: {
                         team:'',
                         name: '',
@@ -121,15 +156,17 @@
             },
 			//显示编辑界面
 			handleEdit (index, row) {
-                this.editFormTitle='编辑资源小班信息';
+                this.editFormTitle='编辑救火队员信息';
+                this.addFormVisible = false;
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
-                this.editFormTitle='添加资源小班';
-				this.editFormVisible = true;
-				this.editForm = {
+                this.editFormTitle='添加救火队员信息';
+                this.editFormVisible = false;
+                this.addFormVisible = true;
+				this.addForm = {
                     id: '',
                     name:'',
                     type: '',
@@ -182,7 +219,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -210,7 +247,18 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 382px;
+    height: 420px;
+    background: #FFFFFF;
+    border: 1px solid #D7D9D8;
+    box-sizing: border-box;
+    padding: 0 16px;
+}
+.addForm-div{
+    position: fixed;
+    top:64px;
+    left:352px;
+    width: 240px;
+    height: 420px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -225,6 +273,10 @@ img{
     display: inline-block;
     /* height: 36px ！important; */
     margin-bottom: 10px ;
+}
+.editForm-button-div{
+    position: absolute;
+    bottom: 0px;
 }
 .editForm-button{
     height: 44px;

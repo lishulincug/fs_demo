@@ -77,8 +77,10 @@
             <el-form-item label="备注" class="editForm-item">
                 <el-input v-model="editForm.mark"></el-input>
             </el-form-item>  
-                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
+            <div class="editForm-button-div">
+                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>            
+            </div>
         </div>
     </div>
 </template>
@@ -203,7 +205,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -231,7 +233,7 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 434px;
+    height: 470px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -239,8 +241,7 @@ img{
 }
 .editForm-form{
     display: inline-block;
-    height: 572px;
-    overflow: hidden
+    height: 430px;
 }
 .editForm-item{
     display: inline-block;

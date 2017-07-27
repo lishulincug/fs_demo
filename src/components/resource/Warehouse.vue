@@ -4,7 +4,7 @@
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
                 <span class="title">  <strong>小横琴物资库1号</strong></span>
-                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="save(1)"/>	
+                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="routerGO('/resource')"/>	
                 
             </div>	
             
@@ -21,9 +21,9 @@
                         </el-option>
                     </el-select>
                     <button class="warehouse-button warehouse-add" @click="handleAdd">添加</button>
-                    <button  class="warehouse-button warehouse-right" @click="handleAdd">物资清单</button>
-                    <button  class="warehouse-button warehouse-right" @click="handleAdd">检查记录</button>
-                    <button class="warehouse-button warehouse-right"  @click="handleAdd">盘点记录</button>
+                    <button class="warehouse-button warehouse-right"  @click="routerGO('/resource/list')">盘点记录</button>
+                    <button  class="warehouse-button warehouse-right" @click="routerGO('/resource/check')">检查记录</button>
+                    <button  class="warehouse-button warehouse-right" @click="routerGO('/resource/warehouse')">物资清单</button>
 
             </el-col>
 
@@ -58,6 +58,7 @@
             </el-table>
         </section>
 	</div>
+    <!--修改  -->
         <div v-show="editFormVisible" class="editForm-div">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
@@ -104,9 +105,63 @@
                     <el-option label="一般" value="beijing"></el-option>
                 </el-select>
             </el-form-item>
-                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            <div class="editForm-button-div">            
+                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="editSubmit()" >保存</button>
+            </div>
             </el-form>
         </div>
+        <!--添加  -->
+        <div v-show="addFormVisible" class="addForm-div">
+            <div class="bt">
+                <img src="../../assets/photo/detail-on@2x.png">
+                <span class="title">  <strong>小横琴物资库1号</strong></span>
+                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="addFormVisible = false"/>	               
+            </div>	
+            <el-form label-position="left" label-width="80px" :model="addForm" class="editForm-form">
+            <el-form-item label="ID" class="editForm-item">
+                <el-input v-model="addForm.id"></el-input>
+            </el-form-item>
+            <el-form-item label="名称" class="editForm-item">
+                <el-input v-model="addForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="类型" class="editForm-item">
+                <el-select v-model="addForm.type" placeholder="请选择类型">
+                    <el-option label="生存" value="shanghai"></el-option>
+                    <el-option label="休息" value="beijing"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="品牌" class="editForm-item">
+                <el-input v-model="addForm.brand"></el-input>
+            </el-form-item>
+            <el-form-item label="型号" class="editForm-item">
+                <el-input v-model="addForm.size"></el-input>
+            </el-form-item>
+            <el-form-item label="购买时间" class="editForm-item">
+                      <el-date-picker type="date" placeholder="选择日期" v-model="addForm.buyTime" style="width: 100%;" ></el-date-picker>
+            </el-form-item>
+            <el-form-item label="现有库存" class="editForm-item">
+                <el-input v-model="addForm.sum"></el-input>
+            </el-form-item>
+            <el-form-item label="警戒库存" class="editForm-item">
+                <el-input v-model="addForm.limit"></el-input>
+            </el-form-item>
+            <el-form-item label="最后使用" class="editForm-item">
+                      <el-date-picker type="date" placeholder="选择日期" v-model="addForm.last" style="width: 100%;" ></el-date-picker>
+            </el-form-item>
+            <el-form-item label="检查时间" class="editForm-item">
+                      <el-date-picker type="date" placeholder="选择日期" v-model="addForm.check" style="width: 100%;" ></el-date-picker>
+            </el-form-item>
+            <el-form-item label="状态" class="editForm-item">
+                <el-select v-model="addForm.state" placeholder="请选择状态">
+                    <el-option label="良好" value="shanghai"></el-option>
+                    <el-option label="一般" value="beijing"></el-option>
+                </el-select>
+            </el-form-item>
+            <div class="editForm-button-div">
+                <button class="editForm-button" @click="addFormVisible = false" >取消</button> <button class="editForm-button" @click="editSubmit()" >保存</button>
+            </div>
+            </el-form>
+        </div>        
     </div>
 </template>
 
@@ -149,14 +204,16 @@
 				total: 0,
 				page: 1,
                 
-        listLoading: false,
-        editFormVisible: false,//编辑界面是否显示
+                listLoading: false,
+                editFormVisible: false,//编辑界面是否显示
+                addFormVisible: false,
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
-				},
+                },
+                addForm:{},
 				//编辑界面数据
 				editForm: {
                     id: '',
@@ -175,19 +232,24 @@
 			}
 		},
 		methods: {
+            routerGO(url){
+                this.$router.push(url);
+            },
             //获取数据
 			getwarehouse() {
 				
             },
 			//显示编辑界面
 			handleEdit (index, row) {
+                this.addFormVisible = false;
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
-				this.editFormVisible = true;
-				this.editForm = {
+                this.editFormVisible = false;
+				this.addFormVisible = true;
+				this.addForm = {
                     id: '',
                     name:'',
                     type: '',
@@ -200,18 +262,14 @@
                     check:'',
                     state:'',
 				    };
-        },
-        handleDel(){
+            },
+            handleDel(){
 
-        },
+            },
             			//编辑
 			editSubmit() {
 
 			},
-      save(index){
-          this.editFormVisible = false; 
-      },
-
     },		
 	mounted() {
 		
@@ -240,7 +298,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -279,7 +337,18 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 610px;
+    height: 660px;
+    background: #FFFFFF;
+    border: 1px solid #D7D9D8;
+    box-sizing: border-box;
+    padding: 0 16px;
+}
+.addForm-div{
+    position: fixed;
+    top:64px;
+    left:352px;
+    width: 240px;
+    height: 660px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -288,23 +357,29 @@ img{
 .editForm-form{
     display: inline-block;
     height: 572px;
-    overflow: hidden
 }
 .editForm-item{
     display: inline-block;
     /* height: 36px ！important; */
     margin-bottom: 10px ;
 }
+.editForm-button-div{
+    position: absolute;
+    bottom: 0;
+    width: 240px;
+    height: 44px;
+    margin-left: -16px;
+}
 .editForm-button{
     height: 44px;
-    color: #FFFFFF;
     font-size: 14px;
     color: #37403F;
     letter-spacing: 0;
     line-height: 14px;
     border: 1px solid #D9D9D9;
-    width: 100px;;
     box-sizing: border-box;
+    display: inline-block;
+    width: 116px;;
     background-color: #FFFFFF;
 }
 .editForm-button:hover{

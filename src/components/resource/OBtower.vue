@@ -25,7 +25,7 @@
             </el-col>
 
             <!--列表-->
-            <el-table :data="OBtowers" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
+            <el-table :data="OBtowers" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;" height="200" border>            
                 <el-table-column prop="name" label="名称" min-width="150" sortable>
                 </el-table-column>
                 <el-table-column prop="user" label="责任人" min-width="150" sortable>
@@ -49,6 +49,7 @@
             </el-table>
         </section>
 	</div>
+    <!--修改  -->
         <div v-show="editFormVisible" class="editForm-div">
             <div class="bt">
                 <img src="../../assets/photo/detail-on@2x.png">
@@ -76,8 +77,44 @@
             </el-form-item>            
             <el-form-item label="备注" class="editForm-item">
                 <el-input v-model="editForm.mark"></el-input>
-            </el-form-item>  
+            </el-form-item>
+            <div class="editForm-button-div">   
                 <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
+            </el-form>
+        </div>
+        <!--添加  -->
+               <div v-show="addFormVisible" class="addForm-div">
+            <div class="bt">
+                <img src="../../assets/photo/detail-on@2x.png">
+                <span class="title">  <strong>{{editFormTitle}}</strong></span>
+                <img class="tableClose" src="../../assets/photo/close@2x.png" @click="addFormVisible = false"/>	               
+            </div>	
+            <el-form label-position="left" label-width="80px" :model="addForm" class="editForm-form">
+            <el-form-item label="名称" class="editForm-item">
+                <el-input v-model="addForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="责任人" class="editForm-item">
+                <el-input v-model="addForm.user"></el-input>
+            </el-form-item>
+            <el-form-item label="联系方式" class="editForm-item">
+                <el-input v-model="addForm.phone"></el-input>
+            </el-form-item>
+            <el-form-item label="位置" class="editForm-item">
+                <el-input v-model="addForm.address"></el-input>
+            </el-form-item>
+            <el-form-item label="经度" class="editForm-item">
+                <el-input v-model="addForm.longitude"></el-input>
+            </el-form-item>
+            <el-form-item label="纬度" class="editForm-item">
+                <el-input v-model="addForm.laitude"></el-input>
+            </el-form-item>            
+            <el-form-item label="备注" class="editForm-item">
+                <el-input v-model="addForm.mark"></el-input>
+            </el-form-item>
+            <div class="editForm-button-div">   
+                <button class="editForm-button" @click="addFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
+            </div>
             </el-form>
         </div>
     </div>
@@ -122,10 +159,11 @@
                 ],
 				total: 0,
 				page: 1,
-                        
+                addFormVisible: false,        
                 listLoading: false,
                 editFormVisible: false,//编辑界面是否显示
                 editLoading: false,
+                addForm:{},
 				//编辑界面数据
                 editForm: {
                         name:'',
@@ -147,14 +185,16 @@
 			//显示编辑界面
 			handleEdit (index, row) {
                 this.editFormTitle='编辑瞭望塔信息';
+                this.addFormVisible = false;
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd () {
                 this.editFormTitle='添加瞭望塔信息';
-				this.editFormVisible = true;
-                this.editForm={
+                this.editFormVisible = false;
+                this.addFormVisible = true;
+                this.addForm={
                         name:'',
                         mark: '',
                         user: '',
@@ -203,7 +243,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -226,12 +266,23 @@ img{
 }
 
 /* ---修改框 添加框  */
+.addForm-div{
+    position: fixed;
+    top:64px;
+    left:352px;
+    width: 240px;
+    height: 470px;
+    background: #FFFFFF;
+    border: 1px solid #D7D9D8;
+    box-sizing: border-box;
+    padding: 0 16px;
+}
 .editForm-div{
     position: fixed;
     top:64px;
     left:352px;
     width: 240px;
-    height: 434px;
+    height: 470px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -247,15 +298,19 @@ img{
     /* height: 36px ！important; */
     margin-bottom: 10px ;
 }
+.editForm-button-div{
+    position: absolute;
+    bottom: 0px;
+
+}
 .editForm-button{
     height: 44px;
-    color: #FFFFFF;
     font-size: 14px;
     color: #37403F;
     letter-spacing: 0;
     line-height: 14px;
     border: 1px solid #D9D9D9;
-    width: 100px;;
+    width: 116px;;
     box-sizing: border-box;
     background-color: #FFFFFF;
 }

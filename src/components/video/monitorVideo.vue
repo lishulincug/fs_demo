@@ -132,7 +132,7 @@
           searchContent.style.height=total-180+"px";
           var rightImg=document.getElementsByClassName('right-img')[0];
           rightImg.style.height=total-48+"px";
-          rightImg.style.width=document.documentElement.clientWidth-96-260+'px';
+          rightImg.style.width=document.documentElement.clientWidth-97-260+'px';
           var allVideo=document.getElementById("allVideo");
           allVideo.style.height=total-48+"px";
           allVideo.style.width=document.documentElement.clientWidth-96+"px";

@@ -85,7 +85,7 @@
                         <el-input v-model="editForm.department"  placeholder="部门"></el-input>
                     </el-form-item>
                     <el-form-item label="发布时间" class="editForm-item">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="editForm.effectiveTime"></el-date-picker>
+                        <el-date-picker type="date" placeholder="选择日期" v-model="editForm.creatdAT"></el-date-picker>
                     </el-form-item>
                     <el-form-item label="实施时间" class="editForm-item">
                         <el-date-picker type="date" placeholder="选择日期" v-model="editForm.effectiveTime"></el-date-picker>
@@ -101,7 +101,62 @@
                     </el-form-item>
                     <button class="editForm-button editForm-button-left" @click="editFormVisible = false" >取消</button> <button class="editForm-button editForm-button-left" @click="save(2)" >保存</button>                
                 </el-form>
-            </div>	    
+            </div>	  
+            <!--添加页面  -->
+            <div v-show="addFormVisible" class="addForm-div">
+                <div class="bt">
+                    <img src="../../assets/photo/detail-on@2x.png">
+                    <span class="title"><strong>{{editFormTitle}}</strong></span>
+                    <img class="tableClose" src="../../assets/photo/close@2x.png" @click="addFormVisible = false"/>	               
+                </div>	
+                <el-form :model="addForm" label-position="left"  label-width="80px"  class="editForm-form">
+                    <el-form-item label="姓名" prop="name" class="editForm-item" >
+                        <el-input v-model="addForm.name" placeholder="姓名"></el-input>
+                    </el-form-item>
+                    <el-form-item label="预防范围" prop="scope" class="editForm-item">
+                        <el-input v-model="addForm.scope" placeholder="范围"></el-input>
+                    </el-form-item>
+                    <el-form-item label="预防等级" prop="preventRank" class="editForm-item">
+                        <el-select v-model="addForm.preventRank" clearable placeholder="请选择">
+                            <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="响应等级" prop="respondRank" class="editForm-item">
+                        <el-select v-model="addForm.respondRank" clearable placeholder="请选择">
+                            <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="解析部门" prop="department" class="editForm-item">
+                        <el-input v-model="addForm.department"  placeholder="部门"></el-input>
+                    </el-form-item>
+                    <el-form-item label="发布时间" class="editForm-item">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addForm.creatdAT"></el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="实施时间" class="editForm-item">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addForm.effectiveTime"></el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="记录时间" class="editForm-item">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addForm.effectiveTime"></el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="备注">
+                        <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="addForm.mark"> </el-input>
+                    </el-form-item>
+                    <el-form-item label="记录人" class="editForm-item">
+                        <el-input v-model="addForm.recorder"  placeholder="记录人"></el-input>
+                    </el-form-item>
+                    <button class="editForm-button editForm-button-left" @click="addFormVisible = false" >取消</button> <button class="editForm-button editForm-button-left" @click="save(2)" >保存</button>                
+                </el-form>
+            </div>	                  
         </section>
 	</div>
     </div>
@@ -147,9 +202,10 @@
 				total: 0,
 				page: 1,
                 listLoading: false,
-                
+                addFormVisible: false,//添加界面是否显示
                 editFormVisible: false,//编辑界面是否显示
-				editLoading: false,
+                editLoading: false,
+                addForm:{},
 				//编辑界面数据
 				editForm: {
                     name: '',
@@ -181,8 +237,9 @@
 			//显示新增界面
 			handleAdd () {
                 this.editFormTitle='新增预案';
-				this.editFormVisible = true;
-				this.editForm = {
+                this.editFormVisible = false;
+				this.addFormVisible = true;
+				this.addForm = {
                     name: '',
                     scope:'',
 					preventRank: '',
@@ -230,7 +287,7 @@
 }
 .bt{
 	height: 48px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #E3E6E5;
 	margin-bottom: 10px;
 }
 img{
@@ -249,7 +306,18 @@ img{
     top:64px;
     left:112px;
     width: 300px;
-    height: 610px;
+    height: 601px;
+    background: #FFFFFF;
+    border: 1px solid #D7D9D8;
+    box-sizing: border-box;
+    padding: 0 16px;
+}
+.addForm-div{
+    position: fixed;
+    top:64px;
+    left:112px;
+    width: 300px;
+    height: 604px;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;

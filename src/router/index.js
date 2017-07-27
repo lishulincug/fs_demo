@@ -16,6 +16,7 @@ import forestRespGrid from '@/components/resource/forestRespGrid'
 import fireStation from '@/components/resource/fireStation'
 import OBtower from '@/components/resource/OBtower'
 import controlCenter from '@/components/resource/controlCenter'
+import List from '@/components/resource/List'
 
 import Patrol from '@/components/Patrol'
 import User from '@/components/Patrol/User'
@@ -180,6 +181,10 @@ export default new Router({
                         path: 'controlCenter',
                         name: 'controlCenter',
                         component: controlCenter
+                    },{
+                        path: 'list',
+                        name: 'List',
+                        component: List
                     }]
 
                 }

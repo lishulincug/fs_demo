@@ -26,7 +26,7 @@
 
             <!--列表-->
             <el-table :data="equipments" highlight-current-row stripe v-loading="listLoading"  style="width: 100%;"height="200" border>            
-                <el-table-column prop="name" label="名称" width="100" sortable>
+                <el-table-column prop="name" label="名称" width="120" sortable>
                 </el-table-column>
                 <el-table-column prop="address" label="地址" width="100" sortable>
                 </el-table-column>
@@ -34,7 +34,7 @@
                 </el-table-column>
                 <el-table-column prop="laitude" label="纬度" width="100" sortable>
                 </el-table-column>
-                <el-table-column prop="user" label="负责人" min-width="150" sortable>
+                <el-table-column prop="user" label="负责人" width="130" sortable>
                 </el-table-column>
                 <el-table-column prop="phone" label="联系方式" min-width="120" sortable>
                 </el-table-column>
@@ -61,7 +61,7 @@
                 <span class="title">  <strong>气象仪设备信息</strong></span>
                 <img class="tableClose" src="../../assets/photo/close@2x.png" @click="editFormVisible = false"/>	               
             </div>	
-            <el-form label-position="left" label-width="80px" :model="editForm" class="editForm-form">
+            <el-form label-position="left" label-width="110px" :model="editForm" class="editForm-form">
             <el-form-item label="名称" class="editForm-item">
                 <el-input v-model="editForm.name"></el-input>
             </el-form-item>
@@ -95,8 +95,10 @@
                     <el-option label="一般" value="beijing"></el-option>
                 </el-select>
             </el-form-item>
-                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>
             </el-form>
+            <div class="editForm-button-div">
+                <button class="editForm-button" @click="editFormVisible = false" >取消</button> <button class="editForm-button" @click="save(2)" >保存</button>            
+            </div>
         </div>
     </div>
 </template>
@@ -258,7 +260,7 @@ img{
     top:64px;
     left:352px;
     width: 240px;
-    height: 570px;
+    height:610;
     background: #FFFFFF;
     border: 1px solid #D7D9D8;
     box-sizing: border-box;
@@ -267,16 +269,18 @@ img{
 .editForm-form{
     display: inline-block;
     height: 572px;
-    overflow: hidden
 }
 .editForm-item{
     display: inline-block;
     /* height: 36px ！important; */
     margin-bottom: 10px ;
 }
+-editForm-button-div{
+    position: absolute;
+    bottom: 0px;
+}
 .editForm-button{
     height: 44px;
-    color: #FFFFFF;
     font-size: 14px;
     color: #37403F;
     letter-spacing: 0;

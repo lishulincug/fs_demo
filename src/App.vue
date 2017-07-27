@@ -20,5 +20,8 @@ export default {
  html,body,#app{
     width: 100%;
     height: 100%;
+    font-family: 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+    font-weight: normal!important;
 }
+
 </style>
